@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    
+}
+:root{
+    --black: black;
+    --red: red;
+    --white: white;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    min-width: 50rem;
+}
+section{
+    margin: 1%;
+}
+
+/* first navbar css start */
+/* .first-navbar{
+    min-width: 80rem;
+} */
+.first-nav{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.first-left-nav, .first-right-nav{
+    display: flex;
+    margin: 0rem 2%;
+}
+.first-left-nav a, .first-right-nav a{
+    font-size: 1.3rem;
+    margin: 0rem .5rem;
+    padding: .5rem;
+}
+/* first navbar css end  */
+
+/* second navbar css start  */
+.second-navbar{
+    position: -webkit-sticky;
+    position: sticky ;     
+    top: 0;
+    z-index: 1;
+    align-self: flex-start;
+}
+.second-nav{
+    font-size: 1.5rem;
+    
+}
+.logo{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.logo span{
+    color: var(--red);
+}
+
+/* second navbar css end  */
+
+.main-posts{
+    width: 82%;
+    max-width: 100rem;
+    margin: auto;
+    padding-top: 3rem;
+}
+.main-post{
+    display: flex;
+}
+.main-post-left-sidebar{
+    width: 80%;
+    /* height: 30rem; */
+    margin: 1rem;
+}
+
+
+.slider-img{
+    padding: 1rem;
+    width: 100%;
+    height: 30rem;
+}
+.slider-title{
+    font-size: 1.8rem;
+}
+.slider-para{
+    font-size: 1.2rem;
+}
+
+
+.three-column-post-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.three-column-post-box{
+    width: 50%;
+    padding: 1rem;
+}
+.three-column-post-image{
+    /* padding: 1rem; */
+    width: 100%;
+    height: 30rem;
+    position: relative;
+}
+.three-column-post-image img{
+    /* padding: 1rem; */
+    width: 100%;
+    height: 25rem;
+}
+
+.main_post_show_category{
+    position: absolute;
+    top: .2rem; left: .2rem;
+    padding: .5rem;
+    background: white;
+    color: black;
+}
+.three-column-post-text{
+    margin-top: -2rem;
+    padding: 0rem .5rem;
+}
+.three-column-post-title{
+    font-size: 1.7rem;
+    font-weight: 100%;
+    text-transform: capitalize;
+    /* word-spacing: rem; */
+    
+}
+.three-column-post-para{
+    font-size: 1.1rem;
+    padding: .5rem 0rem;
+}
+/* main post right sidebar headings css start */
+.main-post-right-sidebar{
+    margin: 1rem;
+    width: 20%;
+}
+.latest-news-title a{
+    text-decoration: none;
+    color: var(--black);
+}
+
+.latest-news-title a h5{
+    margin: 2rem 0rem;
+    padding: 1rem 1rem;
+    border: 1px solid black;
+}
+/* .small-sidebar-banner{
+
+} */
+.small-sidebar-banner img{
+    width: 100%;
+    height: 15rem;
+}
+
+ 
+.most-popular-sidebar{
+    margin: 2rem 0rem;
+}
+.most-popular-sidebar-box{
+    display: flex;
+    margin: 1rem 0rem;
+    
+}
+.most-popular-sidebar-image img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+.most-popular-sidebar-title h6{
+    padding: .5rem 1rem;
+    font-size: 1.1rem;
+}
+
+/* full banner section starts here  */
+.banner{
+    margin-bottom: 20rem;
+}
+
+.full-banner{
+    width: 82%;
+    max-width: 100rem;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    /* padding-top: 1rem; */
+    padding: 2rem;
+} 
+.full-banner-image{
+    position: absolute;
+    width: 97%;
+    height: 15rem;
+}
+.full-banner-image img{
+    width: 100%;
+    height: 100%;
+
+}
+.full-banner-title{
+    position: absolute;
+    margin: 2rem;
+    width: 50%;
+}
+
+/* business category css  */
+.business-category{
+    width: 82%;
+    max-width: 100rem;
+    position: relative;
+    margin: auto;
+    justify-content: center;
+}
+.business-category h1{
+    margin: auto; 
+    display: flex;
+    width:40%;
+    max-width: 20rem;
+    justify-content: center; 
+    font-weight: bolder;
+    background: rgb(62, 58, 58);
+    clip-path: polygon(50% 0%, 100% 0, 90% 50%, 100% 100%, 0 100%, 10% 50%, 0 0);
+    padding: 1rem;
+    color: white;
+}
+.business-category-post-container{
+    margin: 1rem 0rem;
+}
+.business-category-post-box{
+    width: 25%; 
+}
+.view-more{
+    margin: 4rem;
+}
+.view-more button{
+    margin: auto;
+    display: flex;
+    text-align: center;
+    margin-top: 4rem;
+}
+.view-more button a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/* footer css start  */
+.top-footer{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3rem 2rem;
+}
+.top-footer-column{
+    width: 23%;
+    min-width: 20rem;
+}
+.top-footer-column p{
+    font-size: 1.2rem;
+}
+.top-footer-column p a{
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+}
+
+.bottom-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.footer-terms-and-policy-links a{
+    text-decoration: none;
+    padding: 0rem 1rem;
+    color: white;
+}
+.social-icons i{
+    margin: 0rem 1rem;
+}
+
+
+
+
+/* post detail page  css */
+
+.post-detail-box{
+    display: block;
+    flex-direction: column;
+}
+.post-detail-container{
+    position: sticky;
+    width: auto;
+    height: 100rem;
+    overflow-y: auto;
+}
+.post-detail-image{
+    margin: 2rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+.post-detail-image img{
+    width: 90%;
+    height: 20rem;
+}
+.post-detail-content{
+    width: 98%;
+    font-size: 1.5rem;
+}
+
+
+.post-share-social-icons i, .post-share-social-icons span{
+    font-size: 1.5rem;
+    margin: 1rem;
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+/*post comment section css start */
+.comment-container{
+    margin-left: -5rem;
+}
+.be-comment-block {
+    margin-bottom: 50px !important;
+    border: 1px solid #edeff2;
+    border-radius: 2px;
+    padding: 50px 70px;
+    border:1px solid #ffffff;
+}
+
+.comments-title {
+    font-size: 2rem;
+    color: #262626;
+    margin-bottom: 15px;
+    margin-left: -2rem;
+    font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-img-comment {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.be-ava-comment {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.be-comment-content {
+    margin-left: 6rem;
+    display: block;
+}
+
+.be-comment-content span {
+    display: inline-block;
+    width: 49%;
+    margin-bottom: 1rem;
+}
+
+.be-comment-name {
+    font-size: 13px;
+    font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-comment-time {
+    text-align: right;
+    font-size: 11px;
+    color: #b4b7c1;
+}
+
+.be-comment-text {
+    margin-top: -2rem;
+    font-size: 13px;
+    /* line-height: 18px; */
+    color: #7a8192;
+    display: block;
+    background: #f6f6f7;
+    border: 1px solid #edeff2;
+    padding: 15px 20px 20px 20px;
+}
+.form-block{
+    margin: auto;
+    justify-content: center;
+}
+.form-block textarea{
+    width: 90%;
+    height: 10rem;
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+/* post comment section ends here  */
+/* post list show start here  */
+.post-list{
+    min-width: 50rem;
+}
+.post-list-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post-list-box{
+    display: flex;
+    width: 48%;
+    height: 20rem;
+}
+.post-list-image{
+    width: 100%;
+}
+.post-list-image img{
+    height: 15rem;
+    min-width: 15rem;
+    max-width: 20rem;
+}
+.post-list-text{
+    padding: 2rem 0rem 0rem 1rem;
+}
+.post-list-text p{
+    font-size: 1.1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

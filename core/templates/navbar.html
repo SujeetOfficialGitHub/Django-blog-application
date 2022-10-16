@@ -1,0 +1,73 @@
+    <!-- Navar section start here -->
+    <section class="first-navbar">
+        <div class="first-nav bg-dark text-light">
+            <div class="first-left-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/">About</a>
+                <a class="nav-link" href="/">Contact</a>      
+            </div>
+            <div class="first-right-nav">
+                <a class="nav-link" href="/"><i class="fa-brands fa-facebook text-light"></i></a>
+                <a class="nav-link" href="/"><i class="fa-brands fa-twitter text-light"></i></a>
+                <a class="nav-link" href="/"><i class="fa-brands fa-square-instagram text-light"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="second-navbar">
+        <div class="second-nav sticky-top fixed-top shadow">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand logo" href="/">Fancy<span>Blog</span></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link {% if request.path == "/" %}active{% endif %}" aria-current="page" href="/">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">Business</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">Sports</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">Education</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">Entertainment</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">Bollybood</a>
+                      </li>
+                    </ul>
+                   <div class="">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                          <a class="nav-link mr-3" href="{% url 'user_logout' %}">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link ml-3" href="{% url 'change_password' %}">Change Password</a>
+                        </li>
+                        <li class="nav-item">
+                          <h6 class="nav-link">({{request.user}})</h6>
+                        </li> 
+                      {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'user_login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'user_signup' %}">Signup</a>
+                        </li>  
+                      {% endif %}
+                    </ul>
+                   </div>
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </section>
+    <!-- Navar section end here -->

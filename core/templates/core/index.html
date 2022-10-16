@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}   
+    <!-- post section start here -->
+    <section class="main-posts">
+      <div class="main-post">
+        <div class="main-post-left-sidebar">
+          <div class="main-slider">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              </div>
+              <div class="carousel-inner">
+                {% for slider in sliders %}
+                  {% if forloop.first %}
+                    <div class="carousel-item active ">
+                      <a href="{% url 'post_detail' slider.slug %}">
+                        <img class="slider-img" src="{{slider.thumbnail.url}}" class="d-block w-100" alt="...">
+                      </a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5 class="slider-title">{{slider.title|truncatewords:"8"}}</h5>
+                      </div>
+                    </div>
+                  {% else %}
+                    <div class="carousel-item ">
+                      <a href="{% url 'post_detail' slider.slug %}">
+                        <img class="slider-img" src="{{slider.thumbnail.url}}" class="d-block w-100" alt="...">
+                      </a>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5 class="slider-title">{{slider.title|truncatewords:"8"}}</h5>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}    
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <!-- first post of 6 category start -->
+          <div class="three-column-post-container">
+            {% for post in blog_posts %}
+              {% if forloop.counter < 7  %}
+              <div class="three-column-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                  <a href="{% url 'post_detail' post.slug %}">
+                    <img src="{{post.thumbnail.url}}" alt="">
+                  </a>
+                  <h6 class="main_post_show_category">{{post.category.title}}</h6>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                  <p class="three-column-post-para">{{post.meta_text|truncatewords:20}}</p>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <!-- first post of 6 category end -->
+        <!--right sidebar latest post section start here-->
+        <div class="main-post-right-sidebar">
+            <div class="latest-news-title">
+              <h1>Latest Post</h1>
+              <div>
+                {% for post in blog_posts %}
+                {% if forloop.counter < 9  %}
+                <a class="post_id" data-id='{{post.id}}' href="{% url 'post_detail' post.slug %}"><h5>{{post.title|truncatewords:"10"}}</h5></a>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <!--right side small banner start-->
+            <div class="small-sidebar-banner">
+              <a href="">
+                <img src="https://source.unsplash.com/random/natural" alt="">
+              </a>
+            </div>
+            <!-- most popular sidebar posts  start -->
+            <div class="most-popular-sidebar">
+              <h2>Most Popular</h2>
+              {% for post in popular_post %}
+                <div class="most-popular-sidebar-box">
+                  <div class="most-popular-sidebar-image">
+                    <a href="">
+                      <img src="{{post.thumbnail.url}}" alt="">
+                    </a>
+                  </div>
+                  <div class="most-popular-sidebar-title">
+                    <h6>{{post.title|truncatewords:':8'}}</h6>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <!-- post  popular sidebar posts ends -->
+            <!--right side small banner start-->
+            <div class="small-sidebar-banner">
+              <a href="">
+                <img src="https://source.unsplash.com/random/natural" alt="">
+              </a>
+            </div>
+        </div>
+       <!-- right sidebar latest post section end here-->
+      </div>
+    </section>
+    <!-- post section end here -->
+
+    <!-- full banner section start here -->
+    <section class="banner">
+      <div class="full-banner">
+        <div class="full-banner-image">
+          <img src="https://source.unsplash.com/random/natural" alt="">
+        </div>
+        <div class="full-banner-title">
+          <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, molestiae.</h4>
+        </div>
+      </div>
+    </section>
+    <!-- full banner section ends here -->
+
+    <!-- Education category posts start here -->
+    <section id="education">
+      <div class="business-category">
+        <h1>Education</h1>
+        <div class="three-column-post-container business-category-post-container">
+          {% for post in education_post %}
+              <div class="education three-column-post-box business-category-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                  <a href="{% url 'post_detail' post.slug %}">
+                    <img src="{{post.thumbnail.url}}" alt="">
+                  </a>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="view-more">
+            <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+        </div>
+      </div>
+    </section>
+    <!-- Education category posts ends here -->
+    <!-- Sportss category posts start here -->
+    <section id="sports">
+      <div class="business-category">
+        <h1>Sports</h1>
+        <div class="three-column-post-container business-category-post-container">
+          {% for post in sports_post %}
+              <div class="three-column-post-box business-category-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                <a  href="{% url 'post_detail' post.slug %}">
+                  <img src="{{post.thumbnail.url}}" alt="">
+                </a>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="view-more">
+          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+        </div>
+      </div>
+    </section>
+    <!-- Sports category posts ends here -->
+    
+    <!-- business category posts start here -->
+    <section id="business">
+      <div class="business-category">
+        <h1>Business</h1>
+        <div class="three-column-post-container business-category-post-container">
+          {% for post in business_post %}
+              <div class="three-column-post-box business-category-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                <a href="{% url 'post_detail' post.slug %}">
+                  <img src="{{post.thumbnail.url}}" alt="">
+                </a>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="view-more">
+          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+        </div>
+      </div>
+    </section>
+    <!-- business category posts ends here -->
+
+ {% endblock content %}

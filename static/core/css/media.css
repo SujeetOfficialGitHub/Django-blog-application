@@ -1,0 +1,106 @@
+@media (max-width:999px){
+    html{
+        font-size: 58%;
+    }
+}
+
+@media (max-width:999px){
+    html{
+        font-size: 55%;
+    }
+    .main-posts{
+        width: 90%;
+    }
+    .full-banner{
+        width: 90%;
+    }
+    .business-category{
+        width: 90%;
+    }
+    .business-category-post-box{
+        width: 50%; 
+    }
+}
+@media (max-width:800px){
+    html{
+        font-size: 55%;
+    }
+    .main-posts{
+        width: 95%;
+    }
+    .full-banner{
+        width: 95%;
+    }
+    .business-category{
+        width: 95%;
+    }
+}
+@media (max-width:765px){
+    .main-posts{
+        width: 90%;
+    }
+    .full-banner{
+        width: 90%;
+    }
+    .business-category{
+        width: 90%;
+    }
+    .main-post{
+        display: block;
+    }
+    .main-post-left-sidebar{
+        width: 100%;
+        margin: 1rem;
+    }
+    .main-post-right-sidebar{
+        margin: auto;
+        width: 90%;
+    }
+    .latest-news-title a h5{
+        font-size: 1.5rem;
+    }
+    .most-popular-sidebar-title h6{
+        font-size: 1.5rem;
+    }
+    .top-footer-column{
+        width: 45%;
+        min-width: 20rem;
+        margin: 1rem;
+    }
+    .post-list-container{
+        display: block;
+    }
+    .post-list-box{
+        width: 95%;
+        
+    }
+    .post-list-image{
+        width: 30%;
+        margin-right: 2rem;
+        padding: 0rem;
+    }
+    
+    
+
+}
+@media (max-width:500px){
+    .three-column-post-box{
+        width: 90%;
+        margin: auto;
+    }
+    .top-footer-column{
+        width: 90%;
+    }
+
+}
+@media (max-width:300px){
+    .main-posts{
+        width: 95%;
+    }
+    .full-banner{
+        width: 95%;
+    }
+    .business-category{
+        width: 95%;
+    }
+}

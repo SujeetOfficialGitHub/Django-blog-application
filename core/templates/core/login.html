@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    .container{
+        width: 100%;
+        height: 100%;
+    }
+    .login_form_box{
+        max-width:50rem;
+        padding: 2rem;
+        margin: 5rem 0rem 10rem 0rem;
+        justify-content: center;
+        border-radius: 1rem;
+    }
+    .login_form_box h1{
+        font-size: 3rem;
+        text-align: center;
+        justify-content: center;
+    }
+    .login_form{
+        margin: 1rem auto;
+        max-width:48rem;
+        height: 30rem;
+    }
+
+    .input-box input{
+        width: 100%;
+        padding: .5rem;
+        font-size:1.8rem;
+        border: rounded;
+    }
+    .input-box label{
+        font-size: 2rem;
+    }
+    .login_btn{
+        font-size: 2rem;
+        margin:auto;
+        width:15rem;
+    } 
+    .errorlist{
+        color: red;
+        list-style: none;
+        font-size:1.3rem;
+    }
+    .signup_page_link{
+        margin: 1rem;
+        font-size:1.5rem;
+    }
+{% endblock css %}
+{% block content %}
+<div class="container">
+    <div class="login_form_box mx-auto shadow-lg rounded">
+        <h1>Please Login to Continue</h1>
+        <form class="login_form" action="" method="post" novalidate>
+            <div class="form_non_field_errors">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="errorlist">{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            {% for form in form %}
+                <div class="input-group mb-5 input-box">
+                    {{form.label_tag}}<br>
+                    {{form}}{{form.errors}}
+                </div>
+            {% endfor %}
+            <div class="input-group">
+                <input class="login_btn btn-lg btn btn-secondary" type="submit" value="Login">
+            </div>
+
+        </form>
+        <div class="signup_page_link">
+            <p>Don't have an account, Please <a href="{% url 'user_signup' %}">Signup here</a></p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- post section start here -->
+    <section class="main-posts"> 
+        <div class="post-detail-title">
+            <h1>{{post.title}}</h1>
+            <p class="post-detail-author">by author</p>
+            <div class="social-media">
+                <div class="post-share-social-icons">      
+                    <span>share on :</span>
+                    <i class="fa-brands fa-facebook bg-primary text-light"></i>
+                    <i class="fa-brands fa-twitter bg-info text-light"></i>        
+                    <i class="fa-brands fa-linkedin bg-primary text-light"></i>  
+                    <i class="fa-brands fa-instagram bg-danger text-light"></i> 
+                    <i class="fa-brands fa-pinterest bg-danger text-light"></i>
+                    <i class="fa-brands fa-whatsapp bg-success text-light"></i>
+                </div>
+            </div>
+        </div>
+      <div class="main-post">
+        <div class="main-post-left-sidebar">
+          <div class="post-detail">
+            <div class="post-detail-box">
+                <div class="post-detail-container">
+                    <div class="post-detail-content">
+                        <p>{{post.content|safe}}</p>
+                    </div>
+                    <!-- post comment section start -->
+                    <div class="comment-container">
+                    <div class="be-comment-block">
+                      <h1 class="comments-title">Comments {% if comment_count %}({{comment_count}}){% endif %}</h1>
+                      <div class="be-comment">
+                        {% for comment in comments %}
+                        <div class="be-img-comment">	
+                          <a href="blog-detail-2.html">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                          </a>
+                        </div>
+                        <div class="be-comment-content">
+                            <span class="be-comment-name">
+                              <h5>{{comment.user}}</h5>
+                            </span>
+                            <span class="be-comment-time">
+                              <i class="fa fa-clock-o"></i>
+                              {{comment.created}}
+                            </span>
+                            <p class="be-comment-text">{{comment.text}}</p>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      {% if request.user.is_authenticated %}
+                      <form class="form-block" action="" method="post">
+                        {% csrf_token %}								
+                          <div class="form-group">
+                            <textarea class="form-input" name="comment" required="" placeholder="write your comments"></textarea>
+                          </div>
+                          <input class="btn btn-secondary" type="submit" value="Submit">
+                      </form>
+                      {% else %}
+                      <a class="btn btn-secondary comment-btn" href="{% url 'user_login' %}">Write your comment</a>
+                      {% endif %}
+                    </div>
+                    </div>
+                    <!-- post comment section ends here  -->
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-post-right-sidebar">
+            <div class="latest-news-title">
+              <h1>Latest Post</h1>
+              <div>
+                {% for post in blog_posts %}
+                {% if forloop.counter < 9  %}
+                <a class="post_id" data-id='{{post.id}}' href="{% url 'post_detail' post.slug %}"><h5>{{post.title|truncatewords:"10"}}</h5></a>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="small-sidebar-banner">
+              <a href="">
+                <img src="https://source.unsplash.com/random/natural" alt="">
+              </a>
+            </div>
+            <!-- most popular sidebar posts  start -->
+            <div class="most-popular-sidebar">
+              <h2>Most Popular</h2>
+              {% for post in popular_post %}
+                <div class="most-popular-sidebar-box">
+                  <div class="most-popular-sidebar-image">
+                    <a href="">
+                      <img src="{{post.thumbnail.url}}" alt="">
+                    </a>
+                  </div>
+                  <div class="most-popular-sidebar-title">
+                    <h6>{{post.title|truncatewords:':8'}}</h6>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <!-- post  popular sidebar posts ends -->
+        </div>
+      </div>
+    </section>
+    <!-- post section end here -->
+
+    <!-- full banner section start here -->
+    <section class="banner">
+      <div class="full-banner">
+        <div class="full-banner-image">
+          <img src="https://source.unsplash.com/random/natural" alt="">
+        </div>
+        <div class="full-banner-title">
+          <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, molestiae.</h4>
+        </div>
+      </div>
+    </section>
+    <!-- full banner section ends here -->
+
+
+    <!-- Education category posts start here -->
+    <section id="education">
+      <div class="business-category">
+        <h1>Education</h1>
+        <div class="three-column-post-container business-category-post-container">
+          {% for post in education_post %}
+              <div class="education three-column-post-box business-category-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                  <a href="{% url 'post_detail' post.slug %}">
+                    <img src="{{post.thumbnail.url}}" alt="">
+                  </a>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                </div>
+              </div>
+          {% endfor %}
+          
+        </div>
+        <div class="view-more">
+          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+        </div>
+      </div>
+    </section>
+    <!-- Education category posts ends here -->
+    <!-- Sportss category posts start here -->
+    <section id="sports">
+      <div class="business-category">
+        <h1>Sports</h1>
+        <div class="three-column-post-container business-category-post-container">
+          {% for post in sports_post %}
+              <div class="three-column-post-box business-category-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                <a href="{% url 'post_detail' post.slug %}">
+                  <img src="{{post.thumbnail.url}}" alt="">
+                </a>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="view-more">
+          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+        </div>
+      </div>
+    </section>
+    <!-- Sports category posts ends here -->
+    
+    <!-- business category posts start here -->
+    <section id="business">
+      <div class="business-category">
+        <h1>Business</h1>
+        <div class="three-column-post-container business-category-post-container">
+          {% for post in business_post %}
+              <div class="three-column-post-box business-category-post-box">
+                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
+                <a href="{% url 'post_detail' post.slug %}">
+                  <img src="{{post.thumbnail.url}}" alt="">
+                </a>
+                </div>
+                <div class="three-column-post-text">
+                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="view-more">
+          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+        </div>
+      </div>
+    </section>
+    <!-- business category posts ends here -->
+
+    {% endblock content %}
