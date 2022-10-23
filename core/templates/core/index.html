@@ -17,7 +17,7 @@
                 {% for slider in sliders %}
                   {% if forloop.first %}
                     <div class="carousel-item active ">
-                      <a href="{% url 'post_detail' slider.slug %}">
+                      <a href="{% url 'post_detail' slider.id %}">
                         <img class="slider-img" src="{{slider.thumbnail.url}}" class="d-block w-100" alt="...">
                       </a>
                       <div class="carousel-caption d-none d-md-block">
@@ -26,7 +26,7 @@
                     </div>
                   {% else %}
                     <div class="carousel-item ">
-                      <a href="{% url 'post_detail' slider.slug %}">
+                      <a href="{% url 'post_detail' slider.id %}">
                         <img class="slider-img" src="{{slider.thumbnail.url}}" class="d-block w-100" alt="...">
                       </a>
                       <div class="carousel-caption d-none d-md-block">
@@ -48,11 +48,11 @@
           </div>
           <!-- first post of 6 category start -->
           <div class="three-column-post-container">
-            {% for post in blog_posts %}
+            {% for post in latest_post %}
               {% if forloop.counter < 7  %}
               <div class="three-column-post-box">
-                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
-                  <a href="{% url 'post_detail' post.slug %}">
+                <div class="three-column-post-image">
+                  <a href="{% url 'post_detail' post.id %}">
                     <img src="{{post.thumbnail.url}}" alt="">
                   </a>
                   <h6 class="main_post_show_category">{{post.category.title}}</h6>
@@ -70,12 +70,10 @@
         <!--right sidebar latest post section start here-->
         <div class="main-post-right-sidebar">
             <div class="latest-news-title">
-              <h1>Latest Post</h1>
+              <h2>Categories</h2>
               <div>
-                {% for post in blog_posts %}
-                {% if forloop.counter < 9  %}
-                <a class="post_id" data-id='{{post.id}}' href="{% url 'post_detail' post.slug %}"><h5>{{post.title|truncatewords:"10"}}</h5></a>
-                {% endif %}
+                {% for category in categories %}
+                <a href="{% url 'category_list' category.category__id %}"><h5>{{category.category__title}}</h5></a>
                 {% endfor %}
               </div>
             </div>
@@ -91,12 +89,12 @@
               {% for post in popular_post %}
                 <div class="most-popular-sidebar-box">
                   <div class="most-popular-sidebar-image">
-                    <a href="">
+                    <a href="{% url 'post_detail' post.id %}">
                       <img src="{{post.thumbnail.url}}" alt="">
                     </a>
                   </div>
                   <div class="most-popular-sidebar-title">
-                    <h6>{{post.title|truncatewords:':8'}}</h6>
+                    <h6>{{post.title|truncatewords:8}}</h6>
                   </div>
                 </div>
               {% endfor %}
@@ -121,45 +119,21 @@
           <img src="https://source.unsplash.com/random/natural" alt="">
         </div>
         <div class="full-banner-title">
-          <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, molestiae.</h4>
+          <h4>Add Section</h4>
         </div>
       </div>
     </section>
     <!-- full banner section ends here -->
 
-    <!-- Education category posts start here -->
-    <section id="education">
-      <div class="business-category">
-        <h1>Education</h1>
-        <div class="three-column-post-container business-category-post-container">
-          {% for post in education_post %}
-              <div class="education three-column-post-box business-category-post-box">
-                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
-                  <a href="{% url 'post_detail' post.slug %}">
-                    <img src="{{post.thumbnail.url}}" alt="">
-                  </a>
-                </div>
-                <div class="three-column-post-text">
-                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
-                </div>
-              </div>
-          {% endfor %}
-        </div>
-        <div class="view-more">
-            <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
-        </div>
-      </div>
-    </section>
-    <!-- Education category posts ends here -->
-    <!-- Sportss category posts start here -->
-    <section id="sports">
-      <div class="business-category">
-        <h1>Sports</h1>
-        <div class="three-column-post-container business-category-post-container">
-          {% for post in sports_post %}
-              <div class="three-column-post-box business-category-post-box">
-                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
-                <a  href="{% url 'post_detail' post.slug %}">
+    <!-- All post showing start here -->
+    <section id="all-post-section">
+      <div class="all-posts">
+        <h1>Recommended</h1>
+        <div class="three-column-post-container all-posts-container">
+          {% for post in blog_posts %}
+              <div class="three-column-post-box single-post-box">
+                <div class="three-column-post-image">
+                <a  href="{% url 'post_detail' post.id %}">
                   <img src="{{post.thumbnail.url}}" alt="">
                 </a>
                 </div>
@@ -169,36 +143,18 @@
               </div>
           {% endfor %}
         </div>
+        <div class="spinner-border spinner" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
         <div class="view-more">
-          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
+          <button type="submit" class="btn btn-secondary load-btn" data-total={{total_post}}>View More</button>
+        </div>
+        <div class="alert alert-dark no-post-alert text-center" role="alert">
+          No more  posts to show !!
         </div>
       </div>
     </section>
-    <!-- Sports category posts ends here -->
+    <!--All post showing ends here -->
     
-    <!-- business category posts start here -->
-    <section id="business">
-      <div class="business-category">
-        <h1>Business</h1>
-        <div class="three-column-post-container business-category-post-container">
-          {% for post in business_post %}
-              <div class="three-column-post-box business-category-post-box">
-                <div class="three-column-post-image post_id" data-id='{{post.id}}'>
-                <a href="{% url 'post_detail' post.slug %}">
-                  <img src="{{post.thumbnail.url}}" alt="">
-                </a>
-                </div>
-                <div class="three-column-post-text">
-                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
-                </div>
-              </div>
-          {% endfor %}
-        </div>
-        <div class="view-more">
-          <button type="submit" class="btn btn-secondary"><a href="{% url 'post_list' %}">View More</a></button>
-        </div>
-      </div>
-    </section>
-    <!-- business category posts ends here -->
-
+ 
  {% endblock content %}

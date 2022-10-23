@@ -1,4 +1,8 @@
+
+from unicodedata import category
 from django.shortcuts import redirect, render, get_object_or_404
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 from django.db.models import Q, F
 from core.models import BlogPost, PostComment
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
@@ -13,25 +17,35 @@ def home(request):
     }
     return render(request, 'core/index.html',context=context)
 
+# Load more posts 
+def load_posts(request):
+    post_count = int(request.GET['post'])
+    limit = 4
+    blog_posts = BlogPost.objects.filter(published=True).order_by('-created')[post_count:post_count+limit]
+    t = render_to_string('ajax/load-posts.html', {'blog_posts':blog_posts})
+    return JsonResponse({'blog_posts':t})
+
 # Post detaii page 
-def post_detail(request, slug):
-    post = get_object_or_404(BlogPost, slug=slug)
+def post_detail(request, id):
+    post = get_object_or_404(BlogPost, id=id)
+    post_comment = request.POST.get("comment")
+    if request.user:
+        if post_comment:
+            user_comment = PostComment(
+                user = request.user,
+                post = post,
+                text = post_comment
+            )
+            user_comment.save()
+            
     comments = PostComment.objects.filter(post=post)
     comment_count = PostComment.objects.filter(post=post).count()
     
     # post views count 
     post.views_count += 1
+    post.comment = comment_count
     post.save()
     
-    comment_count = request.POST.get("comment")
-    if request.user:
-        if comment_count:
-            comment = PostComment(
-                user = request.user,
-                post = post,
-                text = comment_count
-            )
-            comment.save()
     
     context={
         "post":post,
@@ -41,11 +55,11 @@ def post_detail(request, slug):
     return render(request, 'core/detail.html', context=context)
 
 # Show all posts 
-def post_list(request):
-    posts = BlogPost.objects.filter(published=True).order_by('-id')
-    return render(request, 'core/post_list.html',{'posts':posts})
+def category_list(request, id):
+    posts = BlogPost.objects.filter(Q(published=True) & Q(category=id)).order_by('-id')
+    return render(request, 'core/category-list.html',{'posts':posts})
 
-
+# user signup form 
 def user_signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

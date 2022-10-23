@@ -22,9 +22,7 @@ section{
 }
 
 /* first navbar css start */
-/* .first-navbar{
-    min-width: 80rem;
-} */
+
 .first-nav{
     display: flex;
     justify-content: space-between;
@@ -143,6 +141,10 @@ section{
     text-decoration: none;
     color: var(--black);
 }
+.latest-news-title a h5:hover{
+    background: rgb(237, 236, 236);
+    font-weight: bolder;
+}
 
 .latest-news-title a h5{
     margin: 2rem 0rem;
@@ -208,18 +210,18 @@ section{
 }
 
 /* business category css  */
-.business-category{
+.all-posts{
     width: 82%;
     max-width: 100rem;
     position: relative;
     margin: auto;
     justify-content: center;
 }
-.business-category h1{
+.all-posts h1{
     margin: auto; 
     display: flex;
     width:40%;
-    max-width: 20rem;
+    max-width: 30rem;
     justify-content: center; 
     font-weight: bolder;
     background: rgb(62, 58, 58);
@@ -227,24 +229,30 @@ section{
     padding: 1rem;
     color: white;
 }
-.business-category-post-container{
+.all-posts-container{
     margin: 1rem 0rem;
 }
-.business-category-post-box{
+.single-post-box{
     width: 25%; 
 }
 .view-more{
     margin: 4rem;
 }
-.view-more button{
+.view-more button, .spinner{
     margin: auto;
     display: flex;
     text-align: center;
     margin-top: 4rem;
 }
-.view-more button a{
+.view-more button{
     text-decoration: none;
     color: white;
+}
+.hide{
+    display: none;
+}
+.no-post-alert{
+    font-size: 1.5rem;
 }
 
 

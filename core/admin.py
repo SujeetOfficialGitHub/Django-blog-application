@@ -7,7 +7,7 @@ from .models import BlogPost, Category, PostComment
 admin.site.register(Category)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user','text', 'created')
+    list_display = ('user','text','post', 'created')
 admin.site.register(PostComment, CommentAdmin)
 
 

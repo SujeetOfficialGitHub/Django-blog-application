@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section class="business-category post-list">
-    <h1>All Posts</h1>
-    <div class="three-column-post-container business-category-post-container post-list-container">
+<section class="all-posts post-list">
+    <div class="three-column-post-container all-posts-container post-list-container">
       {% for post in posts %}
-            <div class="three-column-post-box business-category-post-box post-list-box">
+            <div class="three-column-post-box single-post-box post-list-box">
                 <div class="three-column-post-image post-list-image">
-                    <a href="{% url 'post_detail' post.slug %}">
+                    <a href="{% url 'post_detail' post.id %}">
                         <img src="{{post.thumbnail.url}}" alt="">
                     </a>
                 </div>

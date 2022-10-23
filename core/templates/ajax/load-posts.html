@@ -1,0 +1,12 @@
+ {% for post in blog_posts %}
+    <div class="three-column-post-box single-post-box">
+      <div class="three-column-post-image">
+      <a  href="{% url 'post_detail' post.id %}">
+        <img src="{{post.thumbnail.url}}" alt="">
+      </a>
+      </div>
+      <div class="three-column-post-text">
+        <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+      </div>
+    </div>
+{% endfor %} 
