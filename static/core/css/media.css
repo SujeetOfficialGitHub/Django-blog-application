@@ -1,8 +1,3 @@
-@media (max-width:999px){
-    html{
-        font-size: 58%;
-    }
-}
 
 @media (max-width:999px){
     html{
@@ -19,6 +14,9 @@
     }
     .business-category-post-box{
         width: 50%; 
+    }
+    .post-category-list{
+        grid-template-columns: repeat(auto-fit , minmax(35rem, 1fr));
     }
 }
 @media (max-width:800px){
@@ -79,6 +77,14 @@
         margin-right: 2rem;
         padding: 0rem;
     }
+    .all-posts h1{
+        width:60%;
+        max-width: 50rem;
+        
+    }
+    .recommended-post-container{
+        grid-template-columns: repeat(2, 1fr);
+      }
     
     
 
@@ -92,8 +98,21 @@
         width: 90%;
     }
 
+    .post{
+        display: block;
+    }
+    .thumbnail img{
+        width: 100%;
+        height: 100%;
+    }
+    .content{
+        width: 100%;
+        padding: 1rem 0rem;
+    }
+
+
 }
-@media (max-width:300px){
+@media (max-width:350px){
     .main-posts{
         width: 95%;
     }
@@ -102,5 +121,11 @@
     }
     .business-category{
         width: 95%;
+    }
+    .recommended-post-container{
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .post-category-list{
+        grid-template-columns: repeat(auto-fit , minmax(100%, 1fr));
     }
 }

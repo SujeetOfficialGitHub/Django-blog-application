@@ -1,5 +1,4 @@
 
-from unicodedata import category
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import JsonResponse
 from django.template.loader import render_to_string

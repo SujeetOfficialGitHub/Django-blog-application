@@ -11,45 +11,37 @@
     --red: red;
     --white: white;
 }
+html, body {
+    height: 100vh;
+    margin: 0;
+}
+  
 html{
     font-size: 62.5%;
 }
-body{
-    min-width: 50rem;
-}
+
 section{
     margin: 1%;
 }
 
 /* first navbar css start */
-
-.first-nav{
+.first-nav div{
     display: flex;
     justify-content: space-between;
     
 }
 .first-left-nav, .first-right-nav{
     display: flex;
-    margin: 0rem 2%;
 }
 .first-left-nav a, .first-right-nav a{
     font-size: 1.3rem;
-    margin: 0rem .5rem;
     padding: .5rem;
 }
 /* first navbar css end  */
 
 /* second navbar css start  */
-.second-navbar{
-    position: -webkit-sticky;
-    position: sticky ;     
-    top: 0;
-    z-index: 1;
-    align-self: flex-start;
-}
-.second-nav{
+.navbar{
     font-size: 1.5rem;
-    
 }
 .logo{
     font-size: 2rem;
@@ -62,8 +54,6 @@ section{
 /* second navbar css end  */
 
 .main-posts{
-    width: 82%;
-    max-width: 100rem;
     margin: auto;
     padding-top: 3rem;
 }
@@ -72,7 +62,6 @@ section{
 }
 .main-post-left-sidebar{
     width: 80%;
-    /* height: 30rem; */
     margin: 1rem;
 }
 
@@ -184,8 +173,6 @@ section{
 }
 
 .full-banner{
-    width: 82%;
-    max-width: 100rem;
     position: relative;
     margin: auto;
     display: flex;
@@ -195,7 +182,7 @@ section{
 } 
 .full-banner-image{
     position: absolute;
-    width: 97%;
+    width: 100%;
     height: 15rem;
 }
 .full-banner-image img{
@@ -209,32 +196,26 @@ section{
     width: 50%;
 }
 
-/* business category css  */
-.all-posts{
-    width: 82%;
-    max-width: 100rem;
-    position: relative;
-    margin: auto;
-    justify-content: center;
-}
-.all-posts h1{
-    margin: auto; 
-    display: flex;
-    width:40%;
-    max-width: 30rem;
-    justify-content: center; 
-    font-weight: bolder;
-    background: rgb(62, 58, 58);
-    clip-path: polygon(50% 0%, 100% 0, 90% 50%, 100% 100%, 0 100%, 10% 50%, 0 0);
-    padding: 1rem;
-    color: white;
-}
-.all-posts-container{
-    margin: 1rem 0rem;
-}
-.single-post-box{
-    width: 25%; 
-}
+/* Recommended section css  */
+#recommended-section{
+    font-family: 'PT Serif', serif;
+    /* margin: 1rem auto; */
+  }
+.recommended-post-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+.recommended-thumbnail img{
+    width: 100%;
+    height: 15rem;
+  }
+.recommended-content{
+      width: 100%;
+      padding: .3rem;
+  }
+
 .view-more{
     margin: 4rem;
 }
@@ -408,44 +389,27 @@ section{
 }
 
 /* post comment section ends here  */
-/* post list show start here  */
-.post-list{
-    min-width: 50rem;
-}
-.post-list-container{
-    display: flex;
-    flex-wrap: wrap;
-}
 
-.post-list-box{
-    display: flex;
-    width: 48%;
-    height: 20rem;
+/* Category list css start */
+.post-category-list{
+    font-family: 'PT Serif', serif;
+    display: grid;
+    grid-template-columns: repeat(2 , minmax(35rem, 1fr));
+    gap: 1rem;
 }
-.post-list-image{
+.post{
+    display:  flex;
+    padding: 1rem;
+    text-align: justify;
+}
+.thumbnail img{
+    width: 15rem;
+    height: 100%;
+}
+.content{
     width: 100%;
+    padding: 0rem 1rem;
 }
-.post-list-image img{
-    height: 15rem;
-    min-width: 15rem;
-    max-width: 20rem;
+.content .para{
+    font-size: 1.4rem;
 }
-.post-list-text{
-    padding: 2rem 0rem 0rem 1rem;
-}
-.post-list-text p{
-    font-size: 1.1rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

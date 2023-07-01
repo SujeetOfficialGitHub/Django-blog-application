@@ -3,7 +3,7 @@
 {% block content %}
 
     <!-- post section start here -->
-    <section class="main-posts"> 
+    <section class="main-posts container"> 
         <div class="post-detail-title">
             <h1>{{post.title}}</h1>
             <p class="post-detail-author">by author</p>
@@ -106,7 +106,7 @@
     <!-- post section end here -->
 
     <!-- full banner section start here -->
-    <section class="banner">
+    <section class="banner container">
       <div class="full-banner">
         <div class="full-banner-image">
           <img src="https://source.unsplash.com/random/natural" alt="">
@@ -120,19 +120,18 @@
 
 
     <!-- All post showing start here -->
-    <section id="all-post-section">
-      <div class="all-posts">
-        <h1>Recommended</h1>
-        <div class="three-column-post-container all-posts-container">
+    <section id="recommended-section" class="container">
+      <h1 class="text-center bg-secondary text-light p-2">Recommended</h1>
+      <div class="recommended-post-container">
           {% for post in blog_posts %}
-              <div class="three-column-post-box single-post-box">
-                <div class="three-column-post-image">
-                <a  href="{% url 'post_detail' post.id %}">
-                  <img src="{{post.thumbnail.url}}" alt="">
-                </a>
+              <div class="recommended-post">
+                <div class="recommended-thumbnail">
+                  <a  href="{% url 'post_detail' post.id %}">
+                    <img src="{{post.thumbnail.url}}" alt="">
+                  </a>
                 </div>
-                <div class="three-column-post-text">
-                  <h4 class="three-column-post-title">{{post.title|truncatewords:8}}</h4>
+                <div class="recommended-content">
+                  <h4>{{post.title|truncatewords:8}}</h4>
                 </div>
               </div>
           {% endfor %}
@@ -146,7 +145,6 @@
         <div class="alert alert-dark no-post-alert text-center" role="alert">
           No more  posts to show !!
         </div>
-      </div>
     </section>
     <!--All post showing ends here -->
     

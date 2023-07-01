@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section class="all-posts post-list">
-    <div class="three-column-post-container all-posts-container post-list-container">
-      {% for post in posts %}
-            <div class="three-column-post-box single-post-box post-list-box">
-                <div class="three-column-post-image post-list-image">
-                    <a href="{% url 'post_detail' post.id %}">
-                        <img src="{{post.thumbnail.url}}" alt="">
-                    </a>
-                </div>
-                <div class="three-column-post-text post-list-text">
-                    <h4 class="three-column-post-title">{{post.title|truncatewords:10}}</h4>
-                    <p  class="text-primary">{{post.category.title}}</p>
-                    <p>{{post.meta_text|truncatewords:20}}</p>
-                </div>
+
+<div class="post-category-list container">
+    {% for post in posts %}
+        <div class="post">
+            <div class="thumbnail">
+                <a href="{% url 'post_detail'  post.id %}">
+                    <img src="{{post.thumbnail.url}}" alt="">
+                </a>
             </div>
-        {% endfor %}
-    </div>
-</section>
+            <div class="content">
+                <h3><b>{{post.title|truncatewords:10}}</b></h3>
+                <p  class="text-primary p-0 m-0 category">{{post.category.title}}</p>
+                <p class="para">{{post.meta_text|truncatewords:20}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock content %}
